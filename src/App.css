@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.evive-logo{
+  display: flex;
+  flex-direction: column;
+}
+.travelers-image{
+  margin-top: 90px;
+  margin-left: 90px;
+  width: 100px;
+  height: auto;
+  position: absolute;
+}
+.login-form{
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+}
+.login-form-fields{
+  margin-top: 120px;
+  margin-left: 0px;
+}
+.login-button{
+  background-color: grey;
+  color:white;
+  height: 30px;
+  width: auto;
+}
+.login-form-image{
+  margin-left: 200px;
+  margin-right: 0px;
+  height: 800px;
+  width: auto;
+}
+.text-on-login-image{
+  position: fixed;
+  padding-top: 40px;
+  padding-left: 10px;
+}
+.evive-logo-image{
+  width: 80px;
+    height: auto;
+}
+.dashboard-page{
+  display: flex;
+  flex-direction: row;
+}
+.dashboard-content{
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px;
+}
+span{
+  background-color: darkgrey;
+  color: white;
+}
+.voting{
+  margin-top: 100px;
+}
+.cards{
+  display:inline-flex;
+}
+.cards-image{
+  min-width: 80px;
+  max-height: 100px;
+  padding: 10px;
+  pointer-events: none;
+}
+.dashboard-center{
+  display: flex;
+  flex-direction: row;
+}
+
+.side-cards{
+  position: relative;
+  left: 30px;
+  min-width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+#hover:hover{
+  background-color: red;
+}
