@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
+import LoginPage from './LoginPage'
 import {
   Sidebar,
   Segment,
@@ -10,16 +11,18 @@ import {
   Icon,
   Header,
   Card,
+  Rating,
 } from 'semantic-ui-react';
 
 
 class Dashboard extends Component {
 
+
   state = { visible: false }
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
    render(){
-
+     console.log(this.props.username)
      const { visible } = this.state
    return(
 
@@ -32,7 +35,7 @@ class Dashboard extends Component {
           <Button  basic icon="sidebar" onClick={this.toggleVisibility}/>
         </Menu.Item>
         <Menu.Item id="hover" name="user"> <Icon name="user" />
-           <Link to="/Userprofile"> Ardis Cook </Link></Menu.Item>
+           <Link to="/Userprofile"> Welcome, Andrew </Link></Menu.Item>
       <Menu.Item id="hover" name="home"> <Icon name="home" />
         <Link to="/dashboard"> Home </Link></Menu.Item>
       <Menu.Item  id="hover" name="block layout"> <Icon name="block layout" />
@@ -49,7 +52,6 @@ class Dashboard extends Component {
     <Sidebar.Pusher>
     <Segment basic>
 
-
     <div className="dashboard-content">
 
       <div className="topbar">
@@ -61,11 +63,14 @@ class Dashboard extends Component {
            <Image src='https://047f018102c8c8f717a6-1efb167bc857a9871c34d9fa1ea1cbde.ssl.cf1.rackcdn.com/myevive_black.png'/>
          </Menu.Item>
          <Menu.Menu position="right">
+         <Menu.Item>
+          <p> You are logged in with </p>
+         </Menu.Item>
            <Menu.Item>
              <Image src='https://56e0b88549703524cdea-56269be9fa6a015648d898f06ebbb34a.ssl.cf1.rackcdn.com/add40ff726e05ca92fe7f72a8333c9d1b84372f1859a4938d5cf5df707833c55a102e11cf4159ad93d72e766b8e374cdbe4007747dd1934f87bafffd984f1d82.png' width="90px" height="auto"/>
            </Menu.Item>
            <Menu.Item>
-             <Icon name="log out" />Logout
+             <Icon name="power" /> <Link to="/signin">Logout </Link>
            </Menu.Item>
          </Menu.Menu>
       </Menu>
@@ -141,6 +146,7 @@ class Dashboard extends Component {
              <Card.Meta>
                  <span>Health Benefits</span>
              </Card.Meta>
+             <Icon color="red" corner name="remove"></Icon>
              </Card.Content>
          </Card>
          <Card>
@@ -150,6 +156,7 @@ class Dashboard extends Component {
             <Card.Meta>
                 <span>Financial Benefits</span>
             </Card.Meta>
+            <Icon color="red" corner name="remove"></Icon>
             </Card.Content>
         </Card>
         <Card>
@@ -159,6 +166,7 @@ class Dashboard extends Component {
           <Card.Meta>
               <span>Medical Plan</span>
           </Card.Meta>
+          <Icon color="red" corner name="remove"></Icon>
           </Card.Content>
      </Card>
     </Card.Group>

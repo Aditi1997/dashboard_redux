@@ -1,7 +1,20 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-class LoginPage extends Component {
+import { Route} from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
+import Dashboard from './Dashboard'
+class LoginPage extends Component {
+      state={
+        username: " ",
+        password: " ",
+      }
+
+      handlechange = (username) =>{
+        console.log(username)
+        this.setState({
+          username: username
+        })
+      }
 
     render() {
         return (
@@ -13,7 +26,7 @@ class LoginPage extends Component {
           <div className="login-form">
            <div className="login-form-fields">
              Username: <br/>
-             <input type="text" name="username" value=""/> <br/>
+             <input type="text" name="username" value={this.state.username} onChange={(event) => this.handlechange(event.target.value)}/> <br/>
              Password: <br/>
              <input type="password"/> <br/><br/>
              <button type="submit" className="login-button"> <Link to="/dashboard"> Login </Link> </button>
@@ -25,6 +38,8 @@ class LoginPage extends Component {
             </img>
             </div>
             </div>
+            <Route path="/dashboard" render={({ history}) => (
+            <Dashboard username={this.state.username}/> )} />
         </div>
         )
     }
