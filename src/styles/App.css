@@ -53,10 +53,11 @@
   width: auto;
 }
 .login-form-image{
-  margin-left: 200px;
+  margin-left: 300px;
   margin-right: 0px;
   height: 800px;
   width: auto;
+
 }
 .text-on-login-image{
   position: fixed;
@@ -74,7 +75,7 @@
 .dashboard-content{
   display: flex;
   flex-direction: column;
-  padding-left: 100px;
+  padding-left: 50px;
 }
 span{
   background-color: darkgrey;
@@ -93,6 +94,8 @@ span{
   pointer-events: none;
 }
 .dashboard-center{
+  position: relative;
+  top: 20px;
   display: flex;
   flex-direction: row;
 }
