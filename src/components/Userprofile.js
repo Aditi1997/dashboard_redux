@@ -21,7 +21,7 @@ class Userprofile extends Component {
                   </div>
                 </div>
                 <div>
-                abcdefghijklmnopq
+                <img src="https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?201606271147" />
                 </div>
               </Segment>
             </Sidebar.Pusher>

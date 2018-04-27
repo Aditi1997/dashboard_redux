@@ -14,11 +14,11 @@ class SideBar extends Component {
     this.props.loadData();
   }
   toggleVisibility = () => {
-    this.setState({ visible: !this.props.visible })
+    this.setState({ visible: !this.props.visible });
   }
 
   render() {
-    console.log(this.props.loadSidebarStore);
+    console.log(this.props.loadStore);
     const { visible } = this.state;
     return (
       <div>
@@ -26,7 +26,7 @@ class SideBar extends Component {
           <Menu.Item>
             <Button basic icon="sidebar" onClick={this.props.changeState} />
           </Menu.Item>
-          {this.props.loadSidebarStore.sidebar.map(menu => (
+          {this.props && this.props.sidebar && this.props.sidebar.map(menu => (
             <Menu.Item key={menu.text} id="hover" name={menu.icon}> <Icon name={menu.icon} />
               <Link to={menu.link}> {menu.text} </Link>
             </Menu.Item>
@@ -36,10 +36,10 @@ class SideBar extends Component {
     );
   }
 }
-function mapStateToProps({loadSidebarStore})
+function mapStateToProps({loadStore})
 {
   return {
-    loadSidebarStore,
+    sidebar:loadStore.sidebar,
   };
 }
 function mapDispatchToProps(dispatch)

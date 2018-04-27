@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Carousel } from 'react-responsive-carousel';
 import {
   Sidebar,
@@ -8,25 +9,20 @@ import {
 } from 'semantic-ui-react';
 import SortableComponent from './SortableComponent';
 import { fetchCards } from '../services/cardsApi';
+import { loadDashboardActions } from './../actions/dashboard/DashboardActions';
 import SideBar from './commons/SideBar';
 import TopBar from './commons/TopBar';
+import Home from './Home';
 
 
 
 class Dashboard extends Component {
   state = {
     visible: false,
-    cards: [],
   }
 
   componentDidMount() {
-    fetchCards()
-      .then((response) => {
-        response.json()
-          .then((data) => {
-            this.setState({ cards: data })
-          });
-      });
+    this.props.loadCardsData();
   }
 
   changeState = () => {
@@ -43,6 +39,12 @@ class Dashboard extends Component {
   topbar = () => {
     return (
       <TopBar changeState={this.changeState} />
+    )
+  }
+
+  home = () => {
+    return (
+      <Home carousel={this.carousel} sidecards={this.sidecards} />
     )
   }
 
@@ -63,7 +65,7 @@ class Dashboard extends Component {
   sidecards = () => {
     return (
       <div>
-        {(this.state.cards).filter(card => card.section === "side-cards").map(card => (
+        {(this.props.cards).filter(card => card.section === "side-cards").map(card => (
           <Card key={card.meta}>
             <Card.Content>
               <Image
@@ -82,10 +84,10 @@ class Dashboard extends Component {
       ))}
       </div>
     )
-  }
+  };
 
   render() {
-    console.log(this.props.loadSidebarStore);
+    console.log(this.props.loadStore);
     return (
       <div className="dashboard-page">
         <div className="sidebar">
@@ -97,32 +99,30 @@ class Dashboard extends Component {
                   <div className="topbar">
                     {this.topbar()}
                   </div>
-                  <div className="voting">
-                    <Card fluid color="red" header="When did you take a good nap recently?"/>
-                  </div>
-
-                  <div className="dashboard-center">
-                    {this.carousel()}
-
-                    <div className="side-cards">
-                      {this.sidecards()}
-                    </div>
-
-                  </div>
-
+                  {this.home()}
                   <div className="cards">
                     <SortableComponent sidebar={this.sidebar()} topbar={this.topbar()} />
                   </div>
-
                 </div>
-
               </Segment>
             </Sidebar.Pusher>
           </Sidebar.Pushable>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Dashboard
+function mapStateToProps({loadStore})
+{
+  return {
+    cards: loadStore.cards
+  };
+}
+function mapDispatchToProps(dispatch)
+{
+  return {
+    loadCardsData:()=>{dispatch(loadDashboardActions.loadCards())}
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);

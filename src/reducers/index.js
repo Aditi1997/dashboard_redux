@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import dashboardReducer  from './dashboard/DashboardReducer';
+import dashboardReducer from './dashboard/DashboardReducer';
 
 const rootReducer = combineReducers({
-  loadSidebarStore: dashboardReducer,
+  loadStore: dashboardReducer,
 });
 
 export default rootReducer;

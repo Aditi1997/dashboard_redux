@@ -6,16 +6,26 @@ const LOAD_DASHBOARD_ACTION_TYPES = {
   LOAD_CARDS: 'DashboardActions/LOAD_CARDS',
 }
 const loadDashboardActions = {
+
   loadInitialData: () => (dispatch) => {
     fetchsidebar().then((response) => {
       response.json().then((data) => {
         console.log(data);
-        dispatch(loadDashboardActions.loadSidebarStore(data));
+        dispatch(loadDashboardActions.loadStore(data));
       })
     });
   },
 
-  loadSidebarStore: payload => ({ type: LOAD_DASHBOARD_ACTION_TYPES.LOAD_SIDEBAR, payload })
+  loadCards: () => (dispatch) => {
+    fetchCards().then((response1) => {
+      response1.json().then((data1) => {
+        dispatch(loadDashboardActions.loadStore1(data1));
+      })
+    });
+  },
+
+  loadStore: payload => ({ type: LOAD_DASHBOARD_ACTION_TYPES.LOAD_SIDEBAR, payload }),
+  loadStore1: payload => ({ type: LOAD_DASHBOARD_ACTION_TYPES.LOAD_CARDS, payload })
 
 };
 
